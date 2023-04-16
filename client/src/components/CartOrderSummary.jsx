@@ -29,7 +29,7 @@ const CartOrderSummary = () => {
             Subtotal
           </Text>
           <Text fontWeight="medium">
-            {subtotal}
+            ${subtotal}
           </Text>
         </Flex>
         <Flex justify="space-between">
@@ -46,8 +46,13 @@ const CartOrderSummary = () => {
             )}
           </Text>
         </Flex>
-        <Flex fontSize="lg" fontWeight="semibold">
-          {subtotal <=1000 ? Number(subtotal) + Number(standardShipping) : subtotal}
+        <Flex justify="space-between">
+          <Text fontSize="xl" fontWeight="extraBold">
+            Total
+          </Text>
+          <Text fontSize="xl" fontWeight="extraBold">
+            ${subtotal <=1000 ? Number(subtotal) + Number(standardShipping) : subtotal}
+          </Text>
         </Flex>
         <Button 
           as={ReactLink} 

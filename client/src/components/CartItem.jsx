@@ -1,6 +1,6 @@
 import {CloseButton, Flex, Select, useColorModeValue as mode, Stack, Image, Box, Text } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
-import { addCartItem } from "../redux/actions/cartActions";
+import { addCartItem, removeCartItem } from "../redux/actions/cartActions";
 
 
 
@@ -28,7 +28,7 @@ const CartItem = ({cartItem}) => {
         display="flex">
           <Select 
             maxW="64px" 
-            focusBorderColour={mode("orange.500", "orange.200")} 
+            focusBorderColor={mode("orange.500", "orange.200")} 
             value={qty} 
             onChange={(e)=> {
               dispatch(addCartItem(id, e.target.value));
@@ -39,8 +39,8 @@ const CartItem = ({cartItem}) => {
             </option>
           ))}
           </Select>
-        <Text frontWeight="bold">${price}</Text>
-        <CloseButton />
+        <Text fontWeight="bold">${price}</Text>
+        <CloseButton onClick={()=> dispatch(removeCartItem(id))}/>
       </Flex>
     </Flex>
   );
