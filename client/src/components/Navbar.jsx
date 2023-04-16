@@ -18,7 +18,6 @@ const NavLink = ({path, children}) => (
     </Link>
 );
 
-
 const Navbar = () => {
     const { isOpen, onClose, onOpen } = useDisclosure();
     const { colorMode, toggleColorMode} = useColorMode();

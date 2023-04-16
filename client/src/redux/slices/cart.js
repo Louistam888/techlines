@@ -15,10 +15,10 @@ export const cartSlice = createSlice({
     setLoading:(state) => {
       state.loading = true;
     },
-    cartItmeAdd: (state, {payload}) => {
+    cartItemAdd: (state, {payload}) => {
       const existingItem = state.cart.find((item)=> item.id === payload.id );
       if (existingItem) {
-        state.cart = state.cart.map((item) => (item.id === existingItem.id ? payload: item))
+        state.cart = state.cart.map((item) => (item.id === existingItem.id ? payload : item));
       } else {
         state.cart = [...state.cart, payload];
       }

@@ -26,9 +26,13 @@ const CartItem = ({cartItem}) => {
         align={{base: "center", md: "baseline"}} 
         justify="space-between"
         display="flex">
-          <Select maxW="64px" focusBorderColour={mode("orange.500", "orange.200")} value={qty} onChange={(e)=> {
-            dispatch(addCartItem(id, e.target.value))
-          }}>
+          <Select 
+            maxW="64px" 
+            focusBorderColour={mode("orange.500", "orange.200")} 
+            value={qty} 
+            onChange={(e)=> {
+              dispatch(addCartItem(id, e.target.value));
+            }}>
           {[...Array(stock).keys()].map((x)=> (
             <option key={x+1} value={x+1}>
               {x + 1}
