@@ -100,7 +100,7 @@ const addItem = (id) => {
           <Box as="span" color={"gray.600"} fontSize="lg">
             $
           </Box>
-          {typeof product.price === 'number' ? product.price.toFixed(2) : parseInt(product.price)}
+          {typeof product.price === 'number' ? product.price.toFixed(2) : Number(product.price)}
         </Box>
         <Tooltip label="Add to cart" bg="white" placement="top" color="gray.800" fontSize="1.2em">
           <Button 
