@@ -86,7 +86,7 @@ const addItem = (id) => {
         )}
       </Box>
       <Flex mt="1" justifyContent="space-between" alignContent="center">
-          <Link as={ReactLink} to={`/product${product._id}`} pt="2" cursor="pointer">
+          <Link as={ReactLink} to={`/product/${product._id}`} pt="2" cursor="pointer">
             <Box fontSize="2xl" fontWeight="semiBold" lineHeight="tight">
               {product.name}
             </Box>
@@ -115,4 +115,4 @@ const addItem = (id) => {
   );
 };
 
-export default ProductCard
+export default ProductCard;
