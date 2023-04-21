@@ -42,6 +42,16 @@ const ProductScreen = () => {
     dispatch(getProduct(id))
   }, [dispatch, id, cart]);
 
+  const changeAmount = (input) => {
+    if (input === "plus") {
+      setAmount(amount + 1)
+    };
+
+    if (input === "minus") {
+      setAmount(amount - 1)
+    };
+  };
+
   return (
     <Wrap spacing="30px" justify="center" minHeight="100vh">
       { loading 
@@ -97,10 +107,14 @@ const ProductScreen = () => {
                     Quantity
                   </Text>
                   <Flex w="170px" p="5px" border="1px" borderColor="gray.200" alignItems="center">
-                    <Button disabled>
-                      <MinusIcon>
-
-                      </MinusIcon>
+                    <Button isDisabled = {amount <= 1} onClick={()=> changeAmount("minus")}>
+                      <MinusIcon />
+                    </Button>
+                    <Text mx="30px">
+                      {amount}
+                    </Text>
+                    <Button isDisabled = {amount >= product.stock} onClick={()=> changeAmount("plus")}>
+                      <SmallAddIcon w="20px" h="25px"/>
                     </Button>
                   </Flex>
                 </Stack>
