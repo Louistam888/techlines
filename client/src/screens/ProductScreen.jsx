@@ -19,7 +19,7 @@ import {
   useToast 
 } from "@chakra-ui/react";
 import { MinusIcon, StarIcon, SmallAddIcon } from "@chakra-ui/icons";
-import { BiBackage, BiCheckShield, BiSupport } from "react-icons/bi";
+import { BiPackage, BiCheckShield, BiSupport } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from "../redux/actions/productActions";
 import { addCartItem } from "../redux/actions/cartActions";
@@ -50,6 +50,11 @@ const ProductScreen = () => {
     if (input === "minus") {
       setAmount(amount - 1)
     };
+  };
+
+  const addItem = () => {
+    dispatch(addCartItem(product._id, amount));
+    toast({description: "Item has been added.", status: "success", isClosable:true});
   };
 
   return (
@@ -117,8 +122,28 @@ const ProductScreen = () => {
                       <SmallAddIcon w="20px" h="25px"/>
                     </Button>
                   </Flex>
+                  <Button colorScheme = "orange" onClick ={()=> addItem()}>
+                    Add to cart
+                  </Button>
+                  <Stack width="270px">
+                    <Flex alignItems="center">
+                      <BiPackage size="20px" />
+                        <Text fontWeight="medium" fontSize="sm" ml="2">Free shipping if order is above $1,000</Text>
+                    </Flex>
+                    <Flex alignItems="center">
+                      <BiCheckShield size="20px"/>
+                      <Text fontWeight="medium"fontSize="sm" ml="2">Two year extended warranty </Text>
+                    </Flex>
+                    <Flex alignItems="center">
+                      <BiSupport size="20px"/>
+                      <Text fontWeight="medium"fontSize="sm" ml="2">We're here for you 24/7</Text>
+                    </Flex>
+                  </Stack>
                 </Stack>
               </Stack>
+            <Flex direction="column" align="center" flex="1" _dark={{bg:"gray.900"}}>
+              <Image mb="30px" src={product.image} alt={product.name}/>
+            </Flex>
             </Stack>
           </Box>
       }
