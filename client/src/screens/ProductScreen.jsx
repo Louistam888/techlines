@@ -84,6 +84,11 @@ const ProductScreen = () => {
                     New
                   </Badge>
                 )}
+                 {product.stock === 0 && ( 
+                  <Badge rounded="full" w="70px" fontSize="0.8em" colorScheme="red">
+                    Sold out
+                  </Badge>
+                )}
                 <Heading fontSize="2xl" fontWeight="extrabold">
                   {product.name}
                 </Heading>
@@ -122,7 +127,7 @@ const ProductScreen = () => {
                       <SmallAddIcon w="20px" h="25px"/>
                     </Button>
                   </Flex>
-                  <Button colorScheme = "orange" onClick ={()=> addItem()}>
+                  <Button isDisabled={product.stock === 0} colorScheme = "orange" onClick ={()=> addItem()}>
                     Add to cart
                   </Button>
                   <Stack width="270px">
