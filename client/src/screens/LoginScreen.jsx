@@ -22,10 +22,10 @@ import * as Yup from "yup";
 import { useSelector, useDispatch } from "react";
 import { useNavigate, Link as ReactLink, useLocation } from "react-router-dom";
 
-const Login = () => {
-  return (
-    <div>Login</div>
+const LoginScreen = () => {
+  return  (
+    
   )
-}
+};
 
-export default Login
+export default LoginScreen;
