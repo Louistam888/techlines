@@ -21,12 +21,20 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { useSelector, useDispatch } from "react";
 import { useNavigate, Link as ReactLink, useLocation } from "react-router-dom";
+import PasswordTextField from "../components/PasswordTextField";
+import Textfield from "../components/Textfield";
+import { login } from "../redux/actions/userActions";
 
 //TODO: redefine password length 
 const LoginScreen = () => {
+const navigate = useNavigate();
+const location = useLocation();
+const dispatch = useDispatch();
+const redirect = "/products";
+const toast = useToast();
 
-const headingBR = useBreakpointValue({base: "xs", md:"sm"});
-const boxBR = useBreakpointValue({base: "transparent", md: "bg-surface"});
+  const headingBR = useBreakpointValue({base: "xs", md:"sm"});
+  const boxBR = useBreakpointValue({base: "transparent", md: "bg-surface"});
 
   return (
     <Formik 
@@ -39,7 +47,7 @@ const boxBR = useBreakpointValue({base: "transparent", md: "bg-surface"});
         dispatch(login(values.email, values.password));
       }}>
         {(formik)=> (
-          <Container maxW="lg" py={{base: "12", md: "24"}} px={{base:"0", md:"8"} minH="4xl"}>
+          <Container maxW="lg" py={{base: "12", md: "24"}} px={{base:"0", md:"8"}} minH="4xl">
             <Stack spacing="8">
               <Stack spacing="6">
                 <Stack spacing={{base: "2", md: "3"}} textAlign="center">
@@ -50,7 +58,7 @@ const boxBR = useBreakpointValue({base: "transparent", md: "bg-surface"});
                     <Text color="muted">
                       Don't have an account? 
                     </Text>
-                    <Button as={ReactgLink} to="/registration" variant="link" colorScheme="orange">
+                    <Button as={ReactLink} to="/registration" variant="link" colorScheme="orange">
                       Sign Up
                     </Button>
                   </HStack>
@@ -81,16 +89,20 @@ const boxBR = useBreakpointValue({base: "transparent", md: "bg-surface"});
                   )}
                   <Stack spacing="5">
                     <FormControl>
-                      
+                      <TextField type="text" name="email" placeholder="you@example.com" label="Email" />
+                      <PasswordTextField type="password" name="password" placeholder="your password" label="Password" />
                     </FormControl>
+                  </Stack>
+                  <Stack spacing="6">
+                    <Button colorScheme="orange" size="lg" fontSize="md" isLoading={loading} type="submit">
+                      Sign in 
+                    </Button>
                   </Stack>
                 </Stack>
               </Box>
             </Stack>
           </Container>
         )}
-    
-     
     </Formik>
   );
 };
