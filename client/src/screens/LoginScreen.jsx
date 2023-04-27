@@ -22,10 +22,27 @@ import * as Yup from "yup";
 import { useSelector, useDispatch } from "react";
 import { useNavigate, Link as ReactLink, useLocation } from "react-router-dom";
 
+//TODO: redefine password length 
 const LoginScreen = () => {
-  return  (
+  return (
+    <Formik 
+      InitialValues={{email: "",password: "" }}
+      validationSchema={Yup.object({
+        email: Yup.string().email("Invalid email.").required("An email address  is required."),
+        password: Yup.string().min(1, "Password is too short - your password must contain at least one character").required("Password is required."),
+      })} 
+      onSubmit={(values) => {
+        dispatch(login(values.email, values.password));
+      }}>
+        {(formik)=> (
+          <Container maxW="lg" py={{base: "12", md: "24"}} px={{base:"0", md:"8"} minH="4xl"}>
+            
+          </Container>
+        )}
     
-  )
+     
+    </Formik>
+  );
 };
 
 export default LoginScreen;
