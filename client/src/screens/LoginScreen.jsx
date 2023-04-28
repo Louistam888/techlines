@@ -41,7 +41,7 @@ const boxBR = useBreakpointValue({base: "transparent", md: "bg-surface"});
 
 return (
   <Formik 
-    InitialValues={{email: "",password: "" }}
+    initialValues={{email: "",password: "" }}
     validationSchema={Yup.object({
       email: Yup.string().email("Invalid email.").required("An email address  is required."),
       password: Yup.string().min(1, "Password is too short - your password must contain at least one character").required("Password is required."),

@@ -6,12 +6,12 @@ export const login = (email, password) => async (dispatch) => {
   try {
     const config = {
       headers: {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
       },
     };
     const {data} = await axios.post("/api/users/login", { email, password }, config);
     dispatch(userLogin(data))
-    localStorage.setItems("userInfo", JSON.stringify(data));
+    localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
     dispatch(setError(
       error.response && error.response.data.message 
