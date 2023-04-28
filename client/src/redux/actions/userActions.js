@@ -1,4 +1,5 @@
 import axios from "axios";
+import { setLoading, setError, userLogin } from "../slices/user";
 
 export const login = (email, password) => async (dispatch) => {
   dispatch(setLoading(true));
@@ -8,7 +9,7 @@ export const login = (email, password) => async (dispatch) => {
         "content-type": "application/json",
       },
     };
-    const (data) = await axios.post("/api/users/login", { email, password }, config);
+    const {data} = await axios.post("/api/users/login", { email, password }, config);
     dispatch(userLogin(data))
     localStorage.setItems("userInfo", JSON.stringify(data));
   } catch (error) {

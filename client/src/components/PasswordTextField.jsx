@@ -3,7 +3,7 @@ import { Input } from "@chakra-ui/input";
 import { Field, useField } from "formik";
 import { useState } from "react";
 import { InputRightElement, Button, InputGroup } from "@chakra-ui/react";
-import { ViewIcon, ViewOfficon } from "@chakra-ui/icons";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 
 const PasswordTextField = ({label, type, name, placeholder}) => {
@@ -18,7 +18,7 @@ const PasswordTextField = ({label, type, name, placeholder}) => {
         <Field as={Input} {...field} type={type} name={name} placeholder={placeholder} />
         <InputRightElement h="full">
           <Button variant="ghost" onClick={() => setShowPassword((showPassword) => !showPassword)}>
-            {showPassword ?<ViewIcon /> : <ViewOfficon />}
+            {showPassword ?<ViewIcon /> : <ViewOffIcon />}
           </Button>
         </InputRightElement>
       </InputGroup>
@@ -27,4 +27,4 @@ const PasswordTextField = ({label, type, name, placeholder}) => {
   );
 };
 
-export default PasswordwordTextField;
+export default PasswordTextField;
