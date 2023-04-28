@@ -15,7 +15,7 @@ const PasswordTextField = ({label, type, name, placeholder}) => {
         {label}
       </FormLabel>
       <InputGroup>
-        <Field as={Input} {...field} type={type} name={name} placeholder={placeholder } />
+        <Field as={Input} {...field} type={type} name={name} placeholder={placeholder} />
         <InputRightElement h="full">
           <Button variant="ghost" onClick={() => setShowPassword((showPassword) => !showPassword)}>
             {showPassword ?<ViewIcon /> : <ViewOfficon />}
