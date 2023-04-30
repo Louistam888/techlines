@@ -23,7 +23,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { updateProfile, resetUpdateSuccess } from "../redux/actions/userActions";
-import { userLocation } from "react-router";
+import { useLocation } from "react-router";
 import { Navigate } from "react-router-dom";
 
 
@@ -31,7 +31,7 @@ import { Navigate } from "react-router-dom";
 const ProfileScreen = () => {
 
   const dispatch = useDispatch();
-  const user = useSelecto((state) => state.user);
+  const user = useSelector((state) => state.user);
   const { userInfo, error, loading, updateSuccess } = user;
   const location = useLocation();
   const toast = useToast();
