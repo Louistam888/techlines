@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 import LandingScreen from "./screens/LandingScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegistrationScreen from './screens/RegistrationScreen';
-import Profile from  "./screens/ProfileScreen";
+import ProfileScreen from  "./screens/ProfileScreen";
 
 function App() {
   return (
