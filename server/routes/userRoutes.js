@@ -56,6 +56,8 @@ const registerUser = asyncHandler(async(req, res) => {
   }
 });
 
+
+
 userRoutes.route('/login').post(loginUser);
 userRoutes.route('/register').post(registerUser);
 
