@@ -45,9 +45,9 @@ const NavLink = ({path, children}) => (
 const Navbar = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
   const { colorMode, toggleColorMode} = useColorMode();
-  const [isHovering, setIsHovering] = useState(false);
+  const [ isHovering, setIsHovering ] = useState(false);
   const user = useSelector((state)=> state.user);
-  const {userInfo} = user;
+  const { userInfo } = user;
   const dispatch = useDispatch();
   const toast = useToast();
 
