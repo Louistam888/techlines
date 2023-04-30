@@ -7,39 +7,52 @@ import {
   HStack,
   Stack,
   Text,
-  useBreakPointValue,
+  useBreakpointValue,
   useColorModeValue as mode, 
   AlertIcon, 
   AlertTitle,
+  Alert,
   AlertDescription,
   useToast
 } from "@chakra-ui/react";
 import TextField from "../components/TextField";
-import PasswordTextField from "../components/"
+import PasswordTextField from "../components/PasswordTextField";
 import { useState, useEffect } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link as ReactLink } from "react-router-dom";
 import { register } from "../redux/actions/userActions";
  
 const RegistrationScreen = () => {
 
-  
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+  const { loading, error, userInfo } = user; 
+  const redirect = "/products"; 
+  const toast = useToast();
   const headingBR = useBreakpointValue({base: "xs", md:"sm"});
   const boxBR = useBreakpointValue({base: "transparent", md: "bg-surface"});
+  
+  useEffect(() => {
+    if (userInfo) {
+      navigate(redirect)
+      toast({description: "Account created. Welcome abord.", status: "success", isClosable: true});
+    }
+  }, [userInfo, redirect, error, navigate, toast]);
 
   return (
     <Formik 
       initialValues={{email: "", password: "", name: ""}}
       validationSchema={Yup.object({
-        name: Yup.string().min.required("A name address is required."),
+        name: Yup.string().required("A name address is required."),
         email: Yup.string().email("Invalid email.").required("An email address is required."),
         password: Yup.string().min(1, "Password is too short - your password must contain at least one character").required("Password is required."),
         confirmPassword: Yup.string().min(1, "Password is too short - your password must contain at least one character").required("Password is required.").oneOf([Yup.ref("password"), null], "Passwords must match"),
       })} 
       onSubmit={(values) => {
-        dispatch(login(values.name, values.email, values.password));
+        dispatch(register(values.name, values.email, values.password));
       }}>
         {(formik)=> (
           <Container maxW="lg" py={{base: "12", md: "24"}} px={{base:"0", md:"8"}} minH="4xl">

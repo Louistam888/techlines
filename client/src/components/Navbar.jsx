@@ -123,7 +123,7 @@ const Navbar = () => {
                 </Button>
                 <Button 
                   as={ReactLink} 
-                  to="/registation" 
+                  to="/registration" 
                   m={2}
                   display={{base: "none,", md:"inline-flex"}} 
                   fontSize="sm" 
