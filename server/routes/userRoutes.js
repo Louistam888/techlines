@@ -2,7 +2,7 @@ import express from "express";
 import User from "../models/User.js";
 import asyncHandler from "express-async-handler";
 import jwt from "jsonwebtoken";
-import protectRoute from "../middleware/authMiddleware.js";
+import protectRoute from "../middleWare/authMiddleWare.js";
 
 const userRoutes = express.Router();
 
@@ -57,7 +57,7 @@ const registerUser = asyncHandler(async(req, res) => {
   }
 });
 
-const updateUserProfile = asyncHandler(sync(req,res) => {
+const updateUserProfile = asyncHandler(async(req,res) => {
   const user = await User.findById(req.params.id);
 
   if (user) {
@@ -66,15 +66,17 @@ const updateUserProfile = asyncHandler(sync(req,res) => {
     if(req.body.password) {
       user.password = req.body.password;
     }
-    const updateUser = await user.save()
+
+    const updatedUser = await user.save();
+
     res.json({
-      id: updatedUser._id,
+      _id: updatedUser._id,
       name: updatedUser.name,
       email: updatedUser.email,
       isAdmin: updatedUser.isAdmin,
       token: genToken(updatedUser._id),
-      createdAt: updatedAt.createdAt
-    })
+      createdAt: updatedUser.createdAt,
+    });
   } else {
     res.status(404);
     throw new Error("User not found.");
