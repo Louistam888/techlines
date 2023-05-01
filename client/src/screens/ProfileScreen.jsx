@@ -27,8 +27,6 @@ import { updateProfile, resetUpdateSuccess } from "../redux/actions/userActions"
 import { useLocation } from "react-router";
 import { Navigate } from "react-router-dom";
 
-
-
 const ProfileScreen = () => {
 
   const dispatch = useDispatch();
@@ -37,10 +35,16 @@ const ProfileScreen = () => {
   const location = useLocation();
   const toast = useToast();
 
-  return userInfo ? 
+  useEffect(()=> {
+    if (updateSuccess) {
+      toast({description: "Profile saved.", status:"success", isClosable: true});
+    };
+  }, [toast, updateSuccess]);
+
+  return userInfo ?
   
   <Formik 
-      initialValues={{email: "", password: "", name: ""}}
+      initialValues={{email: userInfo.email, password: "", name: userInfo.name, confirmPassword: "" }}
       validationSchema={Yup.object({
         name: Yup.string().required("A name address is required."),
         email: Yup.string().email("Invalid email.").required("An email address is required."),
@@ -48,7 +52,8 @@ const ProfileScreen = () => {
         confirmPassword: Yup.string().min(1, "Password is too short - your password must contain at least one character").required("Password is required.").oneOf([Yup.ref("password"), null], "Passwords must match"),
       })} 
       onSubmit={(values) => {
-        dispatch();
+        dispatch(resetUpdateSuccess());
+        dispatch(updateProfile(userInfo._id, values.name, values.email, values.password));
       }}>
         {(formik)=> (
           <Box 
