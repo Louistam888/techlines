@@ -38,6 +38,7 @@ const ProfileScreen = () => {
   useEffect(()=> {
     if (updateSuccess) {
       toast({description: "Profile saved.", status:"success", isClosable: true});
+      dispatch(resetUpdateSuccess());
     };
   }, [toast, updateSuccess]);
 
@@ -52,7 +53,6 @@ const ProfileScreen = () => {
         confirmPassword: Yup.string().min(1, "Password is too short - your password must contain at least one character").required("Password is required.").oneOf([Yup.ref("password"), null], "Passwords must match"),
       })} 
       onSubmit={(values) => {
-        dispatch(resetUpdateSuccess());
         dispatch(updateProfile(userInfo._id, values.name, values.email, values.password));
       }}>
         {(formik)=> (

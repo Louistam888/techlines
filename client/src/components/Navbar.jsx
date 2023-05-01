@@ -34,7 +34,7 @@ const ShoppingCartIcon = () => {
   return (
     <Flex>
       <Text fontStyle="italic" as="sub" fontSize="xs">{cart.length}</Text>
-      <Icon ml="-1.5" as={FiShoppingCartIcon} h="4" w="7" alignSelf="center" />
+      <Icon ml="-1.5" as={FiShoppingCart} h="4" w="7" alignSelf="center" />
       Cart 
     </Flex>
   )
