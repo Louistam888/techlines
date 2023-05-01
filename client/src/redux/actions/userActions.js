@@ -25,6 +25,7 @@ export const login = (email, password) => async (dispatch) => {
 }; 
 
 export const logout = () => (dispatch) => {
+  dispatch(resetUpdate());
   localStorage.removeItem("userInfo");
   dispatch(userLogout());
 };
@@ -81,4 +82,4 @@ export const updateProfile = (id, name, email, password) => async(dispatch, getS
 
 export const resetUpdateSuccess = () => async(dispatch) => {
   dispatch(resetUpdate());
-}
+};
