@@ -1,7 +1,7 @@
 import express from "express";
 import asyncHandler from "express-async-handler";
-import Order from "../models/Order";
-import { protectRoute } from "../middleWare/authMiddleWare.js";
+import Order from "../models/Order.js";
+import protectRoute from "../middleWare/authMiddleWare.js";
 
 const orderRoutes = express.Router();
 
@@ -28,6 +28,6 @@ const createOrder = asyncHandle(async(req, res) => {
   }
 });
 
-orderRoutes.routes("/").post(protect, createOrder);
+orderRoutes.routes("/").post(protectRoute, createOrder);
 
 export default orderRoutes; 
