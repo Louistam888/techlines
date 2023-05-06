@@ -16,7 +16,7 @@ import { PhoneIcon, EmailIcon, ChatIcon } from "@chakra-ui/icons";
 import { createOrder } from "../redux/actions/orderActions";
 import CheckoutItem from "./CheckoutItem";
 import { useEffect, useState, useCallback } from 'react';
-
+import PayPalButton from "./PayPalButton";
 
 const CheckoutOrderSummary = () => {
   
@@ -92,7 +92,7 @@ const CheckoutOrderSummary = () => {
         </Flex>
       </Stack>
 
-    
+      <PayPalButton total={total} orPaymentSuccess={onPaymentSuccess} onPaymentError={onPaymentError} />
       <Box align='center'>
         <Text fontSize='sm'>Have questions? or need help to complete your order?</Text>
         <Flex justifyContent='center' color={mode('orange.500', 'orange.100')}>
