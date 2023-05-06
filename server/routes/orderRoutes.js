@@ -5,7 +5,7 @@ import protectRoute from "../middleWare/authMiddleWare.js";
 
 const orderRoutes = express.Router();
 
-const createOrder = asyncHandle(async(req, res) => {
+const createOrder = asyncHandler(async(req, res) => {
   const {orderItems, shippingAddress, paymentMethod, shippingPrice, totalPrice, paymentDetails, userInfo } = req.body; 
   
   if (orderItems && orderItems.length === 0) {
@@ -28,6 +28,6 @@ const createOrder = asyncHandle(async(req, res) => {
   }
 });
 
-orderRoutes.routes("/").post(protectRoute, createOrder);
+orderRoutes.route("/").post(protectRoute, createOrder);
 
 export default orderRoutes; 

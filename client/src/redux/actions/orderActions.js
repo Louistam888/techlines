@@ -5,11 +5,11 @@ export const setShippingAddress = (data) => (dispatch) => {
   dispatch(shippingAddressAdd(data));
 };
 
-export const setShippingAddressError = (vallue) => (dispatch) => {
+export const setShippingAddressError = (value) => (dispatch) => {
   dispatch(setError(value));
 };
 
-export const creteOrder = (order) => async (getState) => {
+export const createOrder = (order) => async (getState) => {
   const {
     order: {shippingAddress},
   } = getState();
@@ -22,7 +22,7 @@ export const creteOrder = (order) => async (getState) => {
         "Content-Type": "application/json",
       },
     };
-    const { data } = await axios.post("api/orders, preparedOrder, config")
+    const { data } = await axios.post("api/orders", preparedOrder, config)
   } catch (error) {
     dispatch(setError(
       error.response && error.response.data.message 

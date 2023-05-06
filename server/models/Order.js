@@ -16,7 +16,7 @@ const orderSchema = new mongoose.Schema(
       type: String,
       required: true,
       ref: "User"
-    }
+    },
     orderItems: [
       {
         name: { type: String, required: true},
@@ -59,5 +59,5 @@ const orderSchema = new mongoose.Schema(
   {timestamps: true}
 );
 
-const Order = mongoose.model("Order". orderSchema);
+const Order = mongoose.model("Order", orderSchema);
 export default Order;

@@ -5,11 +5,12 @@ import {
   Flex
 } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
-import { Navigate, useLocation } from "react";
+import { Navigate, useLocation } from "react-router-dom";
+import CheckoutOrderSummary from "../components/CheckoutOrderSummary";
 
 const CheckoutScreen = () => {
   
-  const user = useSeelector((state)=> state.user);
+  const user = useSelector((state)=> state.user);
   const { userInfo } = user;
   const location = useLocation();
 
@@ -22,7 +23,7 @@ const CheckoutScreen = () => {
       py={{base: "6", md: "8", lg: "12"}}
     > 
       <Stack direction={{base: "column", lg: "row"}} align={{ lg: "flex-start "}}>
-        <Stack spacing={{base="8", md:"10"}} flex="1.5" mb={{base:"12", md: "none"}}>
+        <Stack spacing={{base:"8", md:"10"}} flex="1.5" mb={{base:"12", md: "none"}}>
           <Heading fontSize="2xl" fontWeight="extrabold">
             Shipping Information
           </Heading>
@@ -31,7 +32,7 @@ const CheckoutScreen = () => {
           </Stack>
         </Stack>
         <Flex direction="column" align="center" flex="1">
-          {/* <CheckoutOrderSummary /> */}
+          <CheckoutOrderSummary />
         </Flex>
       </Stack>
     </Box> 
@@ -40,4 +41,4 @@ const CheckoutScreen = () => {
   )
 };
 
-export default CheckoutScreen
+export default CheckoutScreen;
