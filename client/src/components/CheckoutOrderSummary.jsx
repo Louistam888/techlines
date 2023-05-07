@@ -33,13 +33,13 @@ const CheckoutOrderSummary = () => {
   const dispatch = useDispatch();
 
   const shipping = useCallback(
-    ()=> (expressShipping === "true" ? 14.99 : subtotal <= 1000 ? 4.99 : 0),
+    () => (expressShipping === 'true' ? 14.99 : subtotal <= 1000 ? 4.99 : 0),
     [expressShipping, subtotal]
-  )
+  );
 
   const total = useCallback(
-    ()=> Number(shipping() === 0 ? Number(subtotal) : Number(subtotal) + shipping().toFixed(2)),
-    [(shipping, subtotal)]
+    () => Number(shipping() === 0 ? Number(subtotal) : Number(subtotal) + shipping()).toFixed(2),
+    [shipping, subtotal]
   );
 
   const onPaymentSuccess = () => {
