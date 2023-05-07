@@ -7,6 +7,7 @@ import {
 import { useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
 import CheckoutOrderSummary from "../components/CheckoutOrderSummary";
+import ShippingInformation from "../components/ShippingInformation";
 
 const CheckoutScreen = () => {
   
@@ -28,7 +29,7 @@ const CheckoutScreen = () => {
             Shipping Information
           </Heading>
           <Stack spacing="6">
-            {/* <ShippingInfo /> */}
+            <ShippingInformation />
           </Stack>
         </Stack>
         <Flex direction="column" align="center" flex="1">

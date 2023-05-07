@@ -46,7 +46,7 @@ const RegistrationScreen = () => {
     <Formik 
       initialValues={{email: "", password: "", name: ""}}
       validationSchema={Yup.object({
-        name: Yup.string().required("A name address is required."),
+        name: Yup.string().required("A name is required."),
         email: Yup.string().email("Invalid email.").required("An email address is required."),
         password: Yup.string().min(1, "Password is too short - your password must contain at least one character").required("Password is required."),
         confirmPassword: Yup.string().min(1, "Password is too short - your password must contain at least one character").required("Password is required.").oneOf([Yup.ref("password"), null], "Passwords must match"),
