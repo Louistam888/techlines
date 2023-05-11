@@ -46,11 +46,11 @@ const ShippingInformation = () => {
     })}>
       {(formik) => (
         <VStack as="form">
-          <FormControl onChange={()=> {
+          <FormControl onChange={
             Object.keys(formik.errors).length === 0 && Object.keys(formik.touched).length >= 2 
               ? setErrorState(false, formik.values) 
               : setErrorState(true)
-          }}>
+          }>
             <TextField name="address" placeholder="Street Address" label="Street Address" />
             <Flex>
               <Box flex="1" mr="10">
