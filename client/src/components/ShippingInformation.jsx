@@ -28,7 +28,7 @@ const ShippingInformation = () => {
       dispatch(setShippingAddress(data));
     };
 
-    if ((!formStateChanged && input || (formStateChanged && input))) {
+    if ((!formStateChanged && !input || (formStateChanged && input))) {
       return; 
     } else {
       setFormStateChanged(input);
@@ -47,14 +47,14 @@ const ShippingInformation = () => {
       {(formik) => (
         <VStack as="form">
           <FormControl onChange={
-            Object.keys(formik.errors).length === 0 && Object.keys(formik.touched).length >= 2 
-              ? setErrorState(false, formik.values) 
+            Object.keys(formik.errors).length === 0 && Object.keys(formik.touched).length >= 2
+              ? setErrorState(false, formik.values)
               : setErrorState(true)
           }>
             <TextField name="address" placeholder="Street Address" label="Street Address" />
             <Flex>
               <Box flex="1" mr="10">
-                <TextField name="postalCode" placeholder="Postal Code" label="Postal Code" type="number"/>
+                <TextField name="postalCode" placeholder="Postal Code" label="Postal Code" type="string"/>
               </Box>
               <Box flex="2">
                 <TextField name="city" placeholder="city" label="City" />

@@ -42,13 +42,13 @@ const CheckoutOrderSummary = () => {
     [shipping, subtotal]
   );
 
-  useEffect(()=> {
+  useEffect(() => {
     if (!error) {
-      setButtonDisabled(false)
+      setButtonDisabled(false);
     } else {
-      setButtonDisabled(true)
+      setButtonDisabled(true);
     }
-  },[error, shippingAddress, total, expressShipping, shipping, dispatch]);
+  }, [error, shippingAddress, total, expressShipping, shipping, dispatch]);
 
   const onPaymentSuccess = () => {
     alert("order success")

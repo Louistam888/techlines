@@ -5,7 +5,7 @@ const PayPalButton = ({total, onPaymentSuccess, onPaymentError, disabled }) => {
     return (
         <PayPalScriptProvider options={{ "client-id": PAYPAL_CLIENT_ID }}>
             <PayPalButtons
-                disabled = {disabled}
+                disabled={disabled}
                 forceReRender={[total()]}
                 createOrder={(data, actions) => {
                     return actions.order.create({
