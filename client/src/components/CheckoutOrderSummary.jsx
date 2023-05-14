@@ -17,11 +17,15 @@ import { createOrder, resetOrder } from "../redux/actions/orderActions";
 import CheckoutItem from "./CheckoutItem";
 import { useEffect, useState, useCallback } from 'react';
 import PayPalButton from "./PayPalButton";
+import PaymentSuccessModal from "./PaymentSuccessModal";
+import PaymentErrorModal from "./PaymentErrorModal";
 
 import { resetCart } from '../redux/actions/cartActions';
 
 const CheckoutOrderSummary = () => {
-  
+
+  const { onClose: onErrorClose, onOpen: onErrorOpen, isOpen: isErrorOpen } = useDisclosure();
+  const { onClose: onSuccessClose, onOpen: onSuccessOpen, isOpen: isSuccessOpen } = useDisclosure();    
   const colorMode = mode("gray.600", "gray.400");
   const cartItems = useSelector((state)=> state.cart);
   const { cart, subtotal, expressShipping } = cartItems;
@@ -53,6 +57,7 @@ const CheckoutOrderSummary = () => {
   }, [error, shippingAddress, total, expressShipping, shipping, dispatch]);
 
   const onPaymentSuccess = async (data) => {
+    onSuccessOpen();
     dispatch(
       createOrder({
         orderItems: cart,
@@ -66,11 +71,10 @@ const CheckoutOrderSummary = () => {
     );
     dispatch(resetOrder());
     dispatch(resetCart());
-    //openSuccess()
   };
 
   const onPaymentError = () => {
-    //onError()
+    onErrorOpen();
   };
 
   return (
@@ -140,6 +144,8 @@ const CheckoutOrderSummary = () => {
           Continue Shopping
         </Link>
       </Flex>
+      <PaymentErrorModal onClose={onErrorClose} onOpen={onErrorOpen} isOpen={isErrorOpen} />
+      <PaymentSuccessModal onClose={onSuccessClose} onOpen={onSuccessOpen} isOpen={isSuccessOpen} />
     </Stack>
   );
 };
