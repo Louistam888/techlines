@@ -13,10 +13,12 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { Link as ReactLink } from "react-router-dom";
 import { PhoneIcon, EmailIcon, ChatIcon } from "@chakra-ui/icons";
-import { createOrder } from "../redux/actions/orderActions";
+import { createOrder, resetOrder } from "../redux/actions/orderActions";
 import CheckoutItem from "./CheckoutItem";
 import { useEffect, useState, useCallback } from 'react';
 import PayPalButton from "./PayPalButton";
+
+import { resetCart } from '../redux/actions/cartActions';
 
 const CheckoutOrderSummary = () => {
   
@@ -50,12 +52,25 @@ const CheckoutOrderSummary = () => {
     }
   }, [error, shippingAddress, total, expressShipping, shipping, dispatch]);
 
-  const onPaymentSuccess = () => {
-    alert("order success")
+  const onPaymentSuccess = async (data) => {
+    dispatch(
+      createOrder({
+        orderItems: cart,
+        shippingAddress,
+        paymentMethod: data.paymentSource,
+        paymentDetails: data,
+        shippingPrice: shipping(),
+        totalPrice: total(),
+        userInfo, 
+      })
+    );
+    dispatch(resetOrder());
+    dispatch(resetCart());
+    //openSuccess()
   };
 
   const onPaymentError = () => {
-    alert("order error");
+    //onError()
   };
 
   return (
