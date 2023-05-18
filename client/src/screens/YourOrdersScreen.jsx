@@ -37,21 +37,21 @@ const YourOrdersScreen = () => {
   return userInfo ? (
     <>
       {loading ? (
-        <Wrap justify='center' direction='column' align='center' mt='20px' minH='100vh'>
-          <Stack direction='row' spacing={4}>
-            <Spinner mt={20} thickness='2px' speed='0.65s' emptyColor='gray.200' color='orange.500' size='xl' />
+        <Wrap justify="center" direction="column" align="center" mt="20px" minH="100vh">
+          <Stack direction="row" spacing={4}>
+            <Spinner mt={20} thickness="2px" speed="0.65s" emptyColor="gray.200" color="orange.500" size="xl" />
           </Stack>
         </Wrap>
       ) : error ? (
-        <Alert status='error'>
+        <Alert status="error">
           <AlertIcon />
           <AlertTitle>We are sorry!</AlertTitle>
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       ) : (
         orders && (
-          <TableContainer minHeight='100vh'>
-            <Table variant='striped'>
+          <TableContainer minHeight="100vh">
+            <Table variant="striped">
               <Thead>
                 <Tr>
                   <Th>Order Id</Th>
@@ -79,7 +79,7 @@ const YourOrdersScreen = () => {
                       ))}
                     </Td>
                     <Td>
-                      <Button variant='outline'>Receipt</Button>
+                      <Button variant="outline">Receipt</Button>
                     </Td>
                   </Tr>
                 ))}
@@ -90,7 +90,7 @@ const YourOrdersScreen = () => {
       )}
     </>
   ) : (
-    <Navigate to='/login' replace={true} state={{ from: location }} />
+    <Navigate to="/login" replace={true} state={{ from: location }} />
   );
 };
 

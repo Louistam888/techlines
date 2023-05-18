@@ -1,5 +1,5 @@
-import {ChakraProvider} from "@chakra-ui/react";
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import { ChakraProvider } from "@chakra-ui/react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import ProductsScreen from "./screens/ProductsScreen";
 import CartScreen from "./screens/CartScreen";
@@ -7,8 +7,8 @@ import ProductScreen from "./screens/ProductScreen";
 import Footer from "./components/Footer";
 import LandingScreen from "./screens/LandingScreen";
 import LoginScreen from "./screens/LoginScreen";
-import RegistrationScreen from './screens/RegistrationScreen';
-import ProfileScreen from  "./screens/ProfileScreen";
+import RegistrationScreen from "./screens/RegistrationScreen";
+import ProfileScreen from "./screens/ProfileScreen";
 import CheckoutScreen from "./screens/CheckoutScreen";
 import YourOrdersScreen from "./screens/YourOrdersScreen";
 
@@ -16,7 +16,7 @@ function App() {
   return (
     <ChakraProvider>
       <Router>
-        <Navbar/>
+        <Navbar />
         <main>
           <Routes>
             <Route path="/" element={<LandingScreen />}></Route>
@@ -24,10 +24,10 @@ function App() {
             <Route path="/product/:id" element={<ProductScreen />}></Route>
             <Route path="/cart" element={<CartScreen />}></Route>
             <Route path="/login" element={<LoginScreen />} />
-            <Route path='/registration' element={<RegistrationScreen />} />
-            <Route path='/profile' element={<ProfileScreen />} />
-            <Route path='/checkout' element={<CheckoutScreen />} />
-            <Route path='/your-orders' element={<YourOrdersScreen />} />
+            <Route path="/registration" element={<RegistrationScreen />} />
+            <Route path="/profile" element={<ProfileScreen />} />
+            <Route path="/checkout" element={<CheckoutScreen />} />
+            <Route path="/your-orders" element={<YourOrdersScreen />} />
           </Routes>
         </main>
         <Footer />
