@@ -25,7 +25,7 @@ const getProduct = async (req, res) => {
 const createProductReview = asyncHandler(async (req, res) => {
   const { rating, comment, userId, title } = req.body;
   const product = await Product.findById(req.params.id);
-  const user = await User.findbyId(userId);
+  const user = await User.findById(userId);
 
   if (product) {
     const alreadyReviewed = product.reviews.find((rev) => rev.user.toString() === user._id.toString());
@@ -55,6 +55,6 @@ const createProductReview = asyncHandler(async (req, res) => {
 
 productRoutes.route("/").get(getProducts);
 productRoutes.route("/:id").get(getProduct);
-productRoutes.route("/reviews/id".post(protectRoute, createProductReview))
+productRoutes.route('/reviews/:id').post(protectRoute, createProductReview);
 
 export default productRoutes;
