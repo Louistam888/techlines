@@ -1,4 +1,4 @@
-import { Box, Stack, Heading, Text, TabList, Tab, TabPanels, TabPanel } from "@chakra-ui/react";
+import { Box, Stack, Heading, Text, TabList, Tab, Tabs, TabPanels, TabPanel } from "@chakra-ui/react";
 import { Navigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
