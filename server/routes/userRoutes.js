@@ -3,49 +3,49 @@ import User from "../models/User.js";
 import Order from "../models/Order.js";
 import asyncHandler from "express-async-handler";
 import jwt from "jsonwebtoken";
-import protectRoute from "../middleWare/authMiddleWare.js";
+import { protectRoute, admin } from "../middleWare/authMiddleWare.js";
 
 const userRoutes = express.Router();
 
-//TODO: redefine expiresIn 
+//TODO: redefine expiresIn
 const genToken = (id) => {
-  return jwt.sign({id}, process.env.TOKEN_SECRET, {expiresIn: "60d"})
+  return jwt.sign({ id }, process.env.TOKEN_SECRET, { expiresIn: "60d" });
 };
 
-const loginUser = asyncHandler(async(req, res) => {
+const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
-  const user = await User.findOne({email})
+  const user = await User.findOne({ email });
   if (user && (await user.matchPasswords(password))) {
     res.json({
-      _id: user._id, 
+      _id: user._id,
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
       token: genToken(user._id),
       createdAt: user.createdAt,
     });
-  } else { 
+  } else {
     res.status(401);
     throw new error("Invalid email or password.");
   }
 });
 
 //POST register user
-const registerUser = asyncHandler(async(req, res) => {
-  const { name, email, password} = req.body;
+const registerUser = asyncHandler(async (req, res) => {
+  const { name, email, password } = req.body;
   const userExists = await User.findOne({ email });
 
-  if(userExists) {
-    res.status(400)
+  if (userExists) {
+    res.status(400);
     throw new Error("We already have an account with that email address.");
   }
   const user = await User.create({
-    name, 
+    name,
     email,
     password,
   });
 
-  if(user) {
+  if (user) {
     res.status(201).json({
       _id: user._id,
       name: user.name,
@@ -54,18 +54,18 @@ const registerUser = asyncHandler(async(req, res) => {
       token: genToken(user._id),
     });
   } else {
-    res.json(400)
-    throw new Error ("invalid user data");
+    res.json(400);
+    throw new Error("invalid user data");
   }
 });
 
-const updateUserProfile = asyncHandler(async(req,res) => {
+const updateUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id);
 
   if (user) {
     user.name = req.body.name || user.name;
-    user.email= req.body.email || user.email;
-    if(req.body.password) {
+    user.email = req.body.email || user.email;
+    if (req.body.password) {
       user.password = req.body.password;
     }
 
@@ -85,14 +85,29 @@ const updateUserProfile = asyncHandler(async(req,res) => {
   }
 });
 
-const getUserOrders = asyncHandler(async(req, res) => {
-  const orders = await Order.find({user: req.params.id})
+const getUserOrders = asyncHandler(async (req, res) => {
+  const orders = await Order.find({ user: req.params.id });
 
-  if(orders) {
-    res.json(orders)
+  if (orders) {
+    res.json(orders);
   } else {
-    res.status(404)
+    res.status(404);
     throw new Error("No orders found");
+  }
+});
+
+const getUsers = asyncHandler(async (req, res) => {
+  const users = await User.find({});
+  res.json(users);
+});
+
+const deleteUser = asyncHander(async (req, res) => {
+  try {
+    const user = await User.findByIdAndRemove(req.params.id);
+    res.json(user);
+  } catch (error) {
+    res.status(404);
+    throw new Error("This user couldnot be found.");
   }
 });
 
@@ -100,5 +115,7 @@ userRoutes.route("/login").post(loginUser);
 userRoutes.route("/register").post(registerUser);
 userRoutes.route("/profile/:id").put(protectRoute, updateUserProfile);
 userRoutes.route("/:id").get(protectRoute, getUserOrders);
+userRoutes.route("/").get(protectRoute, admin, getUsers);
+userRoutes.route("/:id").delete(protectRoute, admin, deleteUser);
 
 export default userRoutes;
