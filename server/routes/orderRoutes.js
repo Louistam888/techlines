@@ -1,7 +1,7 @@
 import express from "express";
 import asyncHandler from "express-async-handler";
 import Order from "../models/Order.js";
-import { protectRoute } from "../middleWare/authMiddleWare.js";
+import { admin, protectRoute } from "../middleWare/authMiddleWare.js";
 
 const orderRoutes = express.Router();
 
@@ -29,7 +29,7 @@ const createOrder = asyncHandler(async (req, res) => {
 });
 
 const getOrders = async (req, res) => {
-  const order = await Order.find({});
+  const orders = await Order.find({});
   res.json(orders);
 };
 
@@ -57,9 +57,9 @@ const setDelivered = asyncHandler(async (req, res) => {
   }
 });
 
-orderRoutes.route("/").post(protectRoute, createOrder);
-orderRoutes.route("/:id").delete(protectRoute, admin, deleteOrder);
-orderRoutes.route("/:id").put(protectRoute, admin, setDelivered);
-orderRoutes.route("/").get(protectRoute, admin, getOrders);
+orderRoutes.route('/').post(protectRoute, createOrder);
+orderRoutes.route('/:id').delete(protectRoute, admin, deleteOrder);
+orderRoutes.route('/:id').put(protectRoute, admin, setDelivered);
+orderRoutes.route('/').get(protectRoute, admin, getOrders);
 
 export default orderRoutes;
