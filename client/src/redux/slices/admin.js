@@ -44,7 +44,6 @@ export const adminSlice = createSlice({
       state.error = null;
       state.loading = false;
       state.userRemoval = false;
-      state.userRemoval = false;
       state.deliveredFlag = false;
       state.orderRemoval = false;
     },
