@@ -9,7 +9,7 @@ import {
   setDeliveredFlag,
   getOrders,
 } from "../slices/admin";
-import { setProducts, setProductUpdateFlag, setReviewRemovalFlag, setReviewRemovalFlag } from "../slices/products";
+import { setProducts, setProductUpdateFlag, setReviewRemovalFlag } from "../slices/products";
 
 export const getAllUsers = () => async (dispatch, getState) => {
   const {
@@ -245,7 +245,7 @@ export const uploadProduct = (newProduct) => async (dispatch, getState) => {
   }
 };
 
-export const removeReview = (product, reviewId) => async (dispatch, getState) => {
+export const removeReview = (productId,  reviewId) => async (dispatch, getState) => {
   const {
     user: { userInfo },
   } = getState();
@@ -257,7 +257,7 @@ export const removeReview = (product, reviewId) => async (dispatch, getState) =>
         "Content-Type": "application/json",
       },
     };
-    const { data } = await axios.put(`api/products${productId}/${reviewId}`, {}, config);
+    const { data } = await axios.put(`api/products/${productId}/${reviewId}`, {}, config);
     dispatch(setProducts(data));
     dispatch(setReviewRemovalFlag());
   } catch (error) {
