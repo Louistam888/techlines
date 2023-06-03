@@ -27,6 +27,7 @@ const ProductsScreen = () => {
   //     return entry;
   //   }
   // });
+  
   //change products2.map at bottom for sorting by brand
 
   useEffect(() => {
