@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 import {
   getUsers,
   userDelete,
@@ -8,8 +8,8 @@ import {
   orderDelete,
   setDeliveredFlag,
   getOrders,
-} from '../slices/admin';
-import { setProducts, setProductUpdateFlag, setReviewRemovalFlag } from '../slices/products';
+} from "../slices/admin";
+import { setProducts, setProductUpdateFlag, setReviewRemovalFlag, setReviewRemovalFlag } from "../slices/products";
 
 export const getAllUsers = () => async (dispatch, getState) => {
   const {
@@ -20,10 +20,10 @@ export const getAllUsers = () => async (dispatch, getState) => {
     const config = {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     };
-    const { data } = await axios.get('api/users', config);
+    const { data } = await axios.get("api/users", config);
     dispatch(getUsers(data));
   } catch (error) {
     dispatch(
@@ -32,7 +32,7 @@ export const getAllUsers = () => async (dispatch, getState) => {
           ? error.response.data.message
           : error.message
           ? error.message
-          : 'Users could not be fetched.'
+          : "Users could not be fetched."
       )
     );
   }
@@ -47,7 +47,7 @@ export const deleteUser = (id) => async (dispatch, getState) => {
     const config = {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     };
     const { data } = await axios.delete(`api/users/${id}`, config);
@@ -59,7 +59,7 @@ export const deleteUser = (id) => async (dispatch, getState) => {
           ? error.response.data.message
           : error.message
           ? error.message
-          : 'Users could not be fetched.'
+          : "Users could not be fetched."
       )
     );
   }
@@ -75,10 +75,10 @@ export const getAllOrders = () => async (dispatch, getState) => {
     const config = {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     };
-    const { data } = await axios.get('api/orders', config);
+    const { data } = await axios.get("api/orders", config);
     dispatch(getOrders(data));
   } catch (error) {
     dispatch(
@@ -87,7 +87,7 @@ export const getAllOrders = () => async (dispatch, getState) => {
           ? error.response.data.message
           : error.message
           ? error.message
-          : 'Orders could not be fetched.'
+          : "Orders could not be fetched."
       )
     );
   }
@@ -102,7 +102,7 @@ export const deleteOrder = (id) => async (dispatch, getState) => {
     const config = {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     };
     const { data } = await axios.delete(`api/orders/${id}`, config);
@@ -114,7 +114,7 @@ export const deleteOrder = (id) => async (dispatch, getState) => {
           ? error.response.data.message
           : error.message
           ? error.message
-          : 'Order could not be removed.'
+          : "Order could not be removed."
       )
     );
   }
@@ -130,7 +130,7 @@ export const setDelivered = (id) => async (dispatch, getState) => {
     const config = {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     };
     await axios.put(`api/orders/${id}`, {}, config);
@@ -142,7 +142,7 @@ export const setDelivered = (id) => async (dispatch, getState) => {
           ? error.response.data.message
           : error.message
           ? error.message
-          : 'Order could not be updated.'
+          : "Order could not be updated."
       )
     );
   }
@@ -163,7 +163,7 @@ export const updateProduct =
       const config = {
         headers: {
           Authorization: `Bearer ${userInfo.token}`,
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       };
       const { data } = await axios.put(
@@ -180,7 +180,7 @@ export const updateProduct =
             ? error.response.data.message
             : error.message
             ? error.message
-            : 'Product could not be updated.'
+            : "Product could not be updated."
         )
       );
     }
@@ -196,7 +196,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
     const config = {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     };
     const { data } = await axios.delete(`api/products/${id}`, config);
@@ -210,7 +210,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
           ? error.response.data.message
           : error.message
           ? error.message
-          : 'Product could not be removed.'
+          : "Product could not be removed."
       )
     );
   }
@@ -226,7 +226,7 @@ export const uploadProduct = (newProduct) => async (dispatch, getState) => {
     const config = {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     };
     const { data } = await axios.post(`api/products`, newProduct, config);
@@ -239,7 +239,35 @@ export const uploadProduct = (newProduct) => async (dispatch, getState) => {
           ? error.response.data.message
           : error.message
           ? error.message
-          : 'Product could not be uploaded.'
+          : "Product could not be uploaded."
+      )
+    );
+  }
+};
+
+export const removeReview = (product, reviewId) => async (dispatch, getState) => {
+  const {
+    user: { userInfo },
+  } = getState();
+
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+        "Content-Type": "application/json",
+      },
+    };
+    const { data } = await axios.put(`api/products${productId}/${reviewId}`, {}, config);
+    dispatch(setProducts(data));
+    dispatch(setReviewRemovalFlag());
+  } catch (error) {
+    dispatch(
+      setError(
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+          ? error.message
+          : "Review could not be removed."
       )
     );
   }
