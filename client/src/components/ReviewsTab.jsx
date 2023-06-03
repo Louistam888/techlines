@@ -56,7 +56,7 @@ const ReviewsTab = () => {
       {error && (
         <Alert status='error'>
           <AlertIcon />
-          <AlertTitle>Upps!</AlertTitle>
+          <AlertTitle>Oops!</AlertTitle>
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}
