@@ -117,7 +117,7 @@ const updateProduct = asyncHandler(async (req, res) => {
   }
 });
 
-const removeProductRoutes = asyncHandler(async (req, res) => {
+const removeProductReview = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.productId);
   const updatedReviews = product.reviews.filter((rev) => rev._id.valueOf() !== req.params.reviewId);
 
@@ -131,7 +131,7 @@ const removeProductRoutes = asyncHandler(async (req, res) => {
       product.rating = 1;
     }
 
-    await.product.save();
+    await product.save();
     res.status(201).json({message: "Review has been  removed."})
   } else {
     res.status(404)
