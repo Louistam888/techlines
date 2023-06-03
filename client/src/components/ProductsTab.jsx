@@ -25,7 +25,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProducts, resetProductError } from '../redux/actions/productActions';
 
 import ProductTableItem from './ProductTableItem';
-// import AddNewProduct from './AddNewProduct';
+import AddNewProduct from './AddNewProduct';
 
 const ProductsTab = () => {
   const dispatch = useDispatch();
@@ -48,7 +48,7 @@ const ProductsTab = () => {
       {error && (
         <Alert status='error'>
           <AlertIcon />
-          <AlertTitle>Upps!</AlertTitle>
+          <AlertTitle>Oops!</AlertTitle>
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}
@@ -76,7 +76,7 @@ const ProductsTab = () => {
               <AccordionPanel pb='4'>
                 <Table>
                   <Tbody>
-                    {/* <AddNewProduct /> */}
+                    <AddNewProduct />
                   </Tbody>
                 </Table>
               </AccordionPanel>

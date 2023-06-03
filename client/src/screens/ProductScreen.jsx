@@ -227,10 +227,11 @@ const ProductScreen = () => {
             )}
             <Stack>
               <Text fontSize="xl" fontWeight="bold">
-                Review
+                Reviews
               </Text>
               <SimpleGrid minChildWidth="300px" spacingX="40px" spacingY="20px">
-                {product.reviews.map((review) => (
+
+                {product.reviews.length === 0 ? "There are no reviews for this product yet" : product.reviews.map((review) => (
                   <Box key={review._id}>
                     <Flex spacing="2px" alignItems="center">
                       <StarIcon color="orange.500" />
@@ -247,8 +248,7 @@ const ProductScreen = () => {
                       by {review.name}, {new Date(review.createdAt).toDateString()}
                     </Text>
                   </Box>
-                ))}
-                ;
+                ))}                
               </SimpleGrid>
             </Stack>
           </Box>

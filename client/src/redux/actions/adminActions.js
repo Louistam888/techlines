@@ -245,7 +245,7 @@ export const uploadProduct = (newProduct) => async (dispatch, getState) => {
   }
 };
 
-export const removeReview = (productId,  reviewId) => async (dispatch, getState) => {
+export const removeReview = (productId, reviewId) => async (dispatch, getState) => {
   const {
     user: { userInfo },
   } = getState();
@@ -254,7 +254,7 @@ export const removeReview = (productId,  reviewId) => async (dispatch, getState)
     const config = {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     };
     const { data } = await axios.put(`api/products/${productId}/${reviewId}`, {}, config);
@@ -267,7 +267,7 @@ export const removeReview = (productId,  reviewId) => async (dispatch, getState)
           ? error.response.data.message
           : error.message
           ? error.message
-          : "Review could not be removed."
+          : 'Review could not be removed.'
       )
     );
   }
