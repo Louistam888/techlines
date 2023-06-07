@@ -12,7 +12,7 @@ node_modules/
 /client/src/client_id.js
 
 # production
-/build
+client/build
 
 # misc
 .DS_Store
