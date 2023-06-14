@@ -2,7 +2,7 @@ import express from 'express';
 import Product from '../models/Product.js';
 import asyncHandler from 'express-async-handler';
 import User from '../models/User.js';
-import { protectRoute, admin } from '../middleware/authMiddleware.js';
+import { protectRoute, admin } from '../middleware/authMiddleWare.js';
 
 const productRoutes = express.Router();
 
