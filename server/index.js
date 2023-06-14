@@ -9,7 +9,6 @@ import productRoutes from "./routes/productRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 
-dotenv.config();
 connectToDatabase();
 const app = express();
 
