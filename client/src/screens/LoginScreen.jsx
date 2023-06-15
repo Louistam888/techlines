@@ -23,7 +23,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, Link as ReactLink, useLocation } from "react-router-dom";
 import PasswordTextField from "../components/PasswordTextField";
 import TextField from "../components/TextField";
-import { login } from "../redux/actions/userActions";
+import { login } from "../redux/actions/userActions.js";
 
 //TODO: redefine password length 
 const LoginScreen = () => {

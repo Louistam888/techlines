@@ -23,7 +23,7 @@ import { useEffect, useState } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import { updateProfile, resetUpdateSuccess } from "../redux/actions/userActions";
+import { updateProfile, resetUpdateSuccess } from "../redux/actions/userActions.js";
 import { useLocation } from "react-router";
 import { Navigate } from "react-router-dom";
 

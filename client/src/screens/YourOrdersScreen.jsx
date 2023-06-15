@@ -18,7 +18,7 @@ import {
   AlertTitle,
 } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserOrders } from "../redux/actions/userActions";
+import { getUserOrders } from "../redux/actions/userActions.js";
 import { useEffect } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 

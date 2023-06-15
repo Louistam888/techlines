@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import ProductCard from "../components/ProductCard";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts } from "../redux/actions/productActions";
+import { getProducts } from "../redux/actions/productActions.js";
 import { useEffect } from "react";
 
 const ProductsScreen = () => {

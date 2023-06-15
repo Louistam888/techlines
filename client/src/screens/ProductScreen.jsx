@@ -24,10 +24,10 @@ import {
 import { MinusIcon, StarIcon, SmallAddIcon } from "@chakra-ui/icons";
 import { BiPackage, BiCheckShield, BiSupport } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
-import { getProduct } from "../redux/actions/productActions";
-import { addCartItem } from "../redux/actions/cartActions";
+import { getProduct } from "../redux/actions/productActions.js";
+import { addCartItem } from "../redux/actions/cartActions.js";
 import { useEffect, useState } from "react";
-import { createProductReview, resetProductError } from "../redux/actions/productActions";
+import { createProductReview, resetProductError } from "../redux/actions/productActions.js";
 
 const ProductScreen = () => {
   const [comment, setComment] = useState("");

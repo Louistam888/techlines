@@ -22,7 +22,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link as ReactLink } from "react-router-dom";
-import { register } from "../redux/actions/userActions";
+import { register } from "../redux/actions/userActions.js";
  
 const RegistrationScreen = () => {
 
