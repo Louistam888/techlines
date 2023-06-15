@@ -30,7 +30,6 @@ const CheckoutOrderSummary = () => {
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const toast = useToast();
 
   const shipping = useCallback(
