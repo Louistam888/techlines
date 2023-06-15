@@ -13,14 +13,14 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { Link as ReactLink } from "react-router-dom";
 import { PhoneIcon, EmailIcon, ChatIcon } from "@chakra-ui/icons";
-import { createOrder, resetOrder } from "../redux/actions/orderActions";
-import CheckoutItem from "./CheckoutItem";
+import { createOrder, resetOrder } from "../redux/actions/orderActions.js";
+import CheckoutItem from "./CheckoutItem.jsx";
 import { useEffect, useState, useCallback } from 'react';
-import PayPalButton from "./PayPalButton";
-import PaymentSuccessModal from "./PaymentSuccessModal";
-import PaymentErrorModal from "./PaymentErrorModal";
+import PayPalButton from "./PayPalButton.jsx";
+import PaymentSuccessModal from "./PaymentSuccessModal.jsx";
+import PaymentErrorModal from "./PaymentErrorModal.jsx";
 
-import { resetCart } from '../redux/actions/cartActions';
+import { resetCart } from '../redux/actions/cartActions.js';
 
 const CheckoutOrderSummary = () => {
 

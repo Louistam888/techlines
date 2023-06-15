@@ -15,7 +15,7 @@ import {
 import { useState } from 'react';
 import { MdDriveFolderUpload } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
-import { uploadProduct } from '../redux/actions/adminActions';
+import { uploadProduct } from '../redux/actions/adminActions.js';
 
 const AddNewProduct = () => {
   const dispatch = useDispatch();

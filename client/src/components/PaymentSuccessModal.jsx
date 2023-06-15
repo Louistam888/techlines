@@ -13,7 +13,7 @@ import {
   Stack
 } from "@chakra-ui/react";
 import { Link as ReactLink, useNavigate } from "react-router-dom";
-import { logout } from "../redux/actions/userActions";
+import { logout } from "../redux/actions/userActions.js";
 import { useDispatch } from "react-redux";
 
 

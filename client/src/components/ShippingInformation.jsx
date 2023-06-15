@@ -3,9 +3,9 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import TextField from './TextField';
 import { useDispatch } from 'react-redux';
-import { setExpress } from '../redux/actions/cartActions';
+import { setExpress } from '../redux/actions/cartActions.js';
 import { useState } from 'react';
-import { setShippingAddress, setShippingAddressError } from '../redux/actions/orderActions';
+import { setShippingAddress, setShippingAddressError } from '../redux/actions/orderActions.js';
 
 const ShippingInformation = () => {
   const dispatch = useDispatch();

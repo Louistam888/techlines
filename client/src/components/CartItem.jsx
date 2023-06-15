@@ -1,6 +1,6 @@
 import {CloseButton, Flex, Select, useColorModeValue as mode, Stack, Image, Box, Text } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
-import { addCartItem, removeCartItem } from "../redux/actions/cartActions";
+import { addCartItem, removeCartItem } from "../redux/actions/cartActions.js";
 
 const CartItem = ({cartItem}) => {
   const {name, image, price, stock, qty, id } = cartItem;

@@ -28,8 +28,8 @@ import {
 } from '@chakra-ui/react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeReview } from '../redux/actions/adminActions';
-import { getProducts, resetProductError } from '../redux/actions/productActions';
+import { removeReview } from '../redux/actions/adminActions.js';
+import { getProducts, resetProductError } from '../redux/actions/productActions.js';
 
 const ReviewsTab = () => {
   const dispatch = useDispatch();

@@ -26,7 +26,7 @@ import { FiShoppingCart } from "react-icons/fi";
 import { GiTechnoHeart } from "react-icons/gi";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../redux/actions/userActions";
+import { logout } from "../redux/actions/userActions.js";
 
 const ShoppingCartIcon = () => {
   const cartInfo = useSelector((state) => state.cart);

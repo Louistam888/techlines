@@ -18,7 +18,7 @@ import { useState, useRef } from 'react';
 import { MdOutlineDataSaverOn } from 'react-icons/md';
 import { DeleteIcon } from '@chakra-ui/icons';
 import { useDispatch } from 'react-redux';
-import { updateProduct, deleteProduct } from '../redux/actions/adminActions';
+import { updateProduct, deleteProduct } from '../redux/actions/adminActions.js';
 import ConfirmRemovalAlert from './ConfirmRemovalAlert';
 
 const ProductTableItem = ({ product }) => {

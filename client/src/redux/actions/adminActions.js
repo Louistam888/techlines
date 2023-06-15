@@ -8,8 +8,8 @@ import {
   orderDelete,
   setDeliveredFlag,
   getOrders,
-} from "../slices/admin";
-import { setProducts, setProductUpdateFlag, setReviewRemovalFlag } from "../slices/products";
+} from "../slices/admin.js";
+import { setProducts, setProductUpdateFlag, setReviewRemovalFlag } from "../slices/products.js";
 
 export const getAllUsers = () => async (dispatch, getState) => {
   const {
