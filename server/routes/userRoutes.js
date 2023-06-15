@@ -36,7 +36,7 @@ const registerUser = asyncHandler(async (req, res) => {
   const userExists = await User.findOne({ email });
 
   if (userExists) {
-    res.status(400).send("We already have an account with that email address.");
+    res.status(400).json("We already have an account with that email address.");
   }
   const user = await User.create({
     name,
@@ -53,7 +53,7 @@ const registerUser = asyncHandler(async (req, res) => {
       token: genToken(user._id),
     });
   } else {
-    res.json(400).send("Invalid user data.");
+    res.status(400).json("Invalid user data.");
   }
 });
 
